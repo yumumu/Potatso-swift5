@@ -24,7 +24,7 @@ class ProxyRowCell: Cell<Proxy>, CellType {
 
     let group = ConstraintGroup()
 
-    required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
     }
@@ -32,7 +32,11 @@ class ProxyRowCell: Cell<Proxy>, CellType {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        fatalError("init(style:reuseIdentifier:) has not been implemented")
+    }
+    
     override func setup() {
         super.setup()
         preservesSuperviewLayoutMargins = false

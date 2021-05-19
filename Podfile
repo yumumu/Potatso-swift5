@@ -1,6 +1,8 @@
+ENV['SWIFT_VERSION'] = '5'
+
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
+platform :ios, '13.0'
 use_frameworks!
 
 def library
@@ -30,12 +32,16 @@ target "Potatso" do
     pod 'Appirater'
     pod 'Eureka'
     pod 'MBProgressHUD'
-    pod 'CallbackURLKit', :path => "./Library/CallbackURLKit"
+#    pod 'CallbackURLKit', :path => "./Library/CallbackURLKit"
+    pod 'CallbackURLKit'
     pod 'ICDMaterialActivityIndicatorView'
-    pod 'Reveal-iOS-SDK', '~> 1.6.2', :configurations => ['Debug']
-    pod 'ICSPullToRefresh'
+    # pod 'Reveal-iOS-SDK', '~> 1.6.2', :configurations => ['Debug']
+    pod 'LookinServer', :configurations => ['Debug']
+#    pod 'ICSPullToRefresh'
+#    pod 'ICSPullToRefresh'
+    pod 'ICSPullToRefresh', :git => "https://github.com/emukans/ICSPullToRefresh.Swift.git", :branch => "refactor/swift-5"
     pod 'ISO8601DateFormatter'
-    pod 'Alamofire'
+    pod 'Alamofire', '4.8.2'
     pod 'ObjectMapper', '~> 3.4'
     pod 'CocoaLumberjack/Swift'
     pod 'PSOperations'
@@ -77,3 +83,25 @@ target "PotatsoLibraryTests" do
     library
 end
 
+#post_install do |installer|
+#  installer.pods_project.targets.each do |target|
+#    # Cache pod does not accept optimization level '-O', causing Bus 10 error. Use '-Osize' or '-Onone'
+#    if target.name == 'Cache'
+#      target.build_configurations.each do |config|
+#        level = '-Osize'
+#        config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = level
+#        puts "Set #{target.name} #{config.name} to Optimization Level #{level}"
+#      end
+#    end
+#  end
+#end
+#
+#post_install do |installer|
+#  installer.pods_project.targets.each do |target|
+#    if target.name == 'CryptoSwift' || target.name == 'SwiftyBeaver'
+#      target.build_configurations.each do |config|
+#        config.build_settings['SWIFT_VERSION'] = '4.2'
+#      end
+#    end
+#  end
+#end
